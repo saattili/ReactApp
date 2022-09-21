@@ -1,5 +1,6 @@
 import './App.css'
 import Header from './Header';
+import Employees from './Employee';
 import Content from './Content';
 import Footer from './Footer';
 
@@ -8,7 +9,7 @@ export default function App() {
 
     <div >
       <Header />
-      <Content />
+      <Employees />
       <Footer />
     </div>
 

@@ -3,3 +3,7 @@ main {
   vertical-align: center;
   line-height: 100vh
 }
+.card-collection{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 
+}
