@@ -3,10 +3,10 @@ import femaleProfile from './images/femaleProfile.jpg';
 import maleProfile from './images/maleProfile.jpg';
 
 const Employees = () => {
-  const [selectedTeam, setTeam] = useState("Development")
+  const [selectedTeam, setTeam] = useState("Dev")
   const [employees, setEmployee] = useState([
     {
-      id: 1,
+      id: 100,
       fullName: "Madhav",
       totalExp: 7,
       team: "Dev",
@@ -14,31 +14,31 @@ const Employees = () => {
 
     },
     {
-      id: 1,
+      id: 200,
       fullName: "Rebacca",
       totalExp: 9,
-      team: "QA",
+      team: "HR",
       gender: "female"
 
     },
     {
-      id: 1,
+      id: 300,
       fullName: "Edward",
       totalExp: 7,
-      team: "Devops",
+      team: "Dev",
       gender: "male"
 
     },
     {
-      id: 1,
+      id: 400,
       fullName: "Nicole",
       totalExp: 8.5,
-      team: "Developer",
+      team: "Dev",
       gender: "female"
 
     },
     {
-      id: 1,
+      id: 500,
       fullName: "Martin",
       totalExp: 1,
       team: "Admin",
@@ -46,10 +46,58 @@ const Employees = () => {
 
     },
     {
-      id: 1,
+      id: 600,
+      fullName: "Lara",
+      totalExp: 2,
+      team: "Support",
+      gender: "female"
+
+    },
+    {
+      id: 700,
+      fullName: "Dave",
+      totalExp: 6,
+      team: "Devops",
+      gender: "male"
+
+    },
+    {
+      id: 800,
+      fullName: "Jaffa",
+      totalExp: 10,
+      team: "HR",
+      gender: "female"
+
+    },
+    {
+      id: 900,
       fullName: "Daniel",
       totalExp: 2,
-      team: "Human Resources",
+      team: "Devops",
+      gender: "male"
+
+    },
+    {
+      id: 1000,
+      fullName: "Kufli",
+      totalExp: 1,
+      team: "Admin",
+      gender: "male"
+
+    },
+    {
+      id: 1100,
+      fullName: "Chaata",
+      totalExp: 1,
+      team: "Admin",
+      gender: "male"
+
+    },
+    {
+      id: 1200,
+      fullName: "Martin",
+      totalExp: 1,
+      team: "Support",
       gender: "male"
 
     },
@@ -57,13 +105,24 @@ const Employees = () => {
 
   function handleTeamChange(event) {
     setTeam(event.target.value);
-    console.log(selectedTeam);
+
   }
+
+  function handleEmployeeCards(event) {
+    const updatedEmployeeList = employees.map((employee) => employee.id === parseInt(event.currentTarget.id) ?
+      (employee.team === selectedTeam) ? { ...employee, team: '' } : { ...employee, team: selectedTeam } : employee);
+
+    setEmployee(updatedEmployeeList);
+
+
+  }
+
+
   return (
     <main className='container'>
       <div className='row justify-content-center mt-3 mb-3'>
         <div className='col-12'>
-          Team : <select name="Team" className="form-select form-select-lg mb-3" value={selectedTeam} onChange={handleTeamChange}>
+          <select name="Team" className="form-select form-select-lg mb-3 mr-3" value={selectedTeam} onChange={handleTeamChange}>
             <option value="Dev">Development</option>
             <option value="Support">Support</option>
             <option value="Devops">Dev-Ops</option>
@@ -78,7 +137,7 @@ const Employees = () => {
           <div className="card-collection">
             {
               employees.map((employee) => (
-                <div id={employee.id} className="card m-2" style={{ cursor: "pointer" }}>
+                <div id={employee.id} className={employee.team === selectedTeam ? "standout card m-3" : "card m-3"} style={{ cursor: "pointer" }} onClick={handleEmployeeCards}>
                   {(employee.gender == "male") ? <img src={maleProfile} className="card-img-top" /> : <img src={femaleProfile} className="card-img-top" />}
                   <div className="card-body">
                     <h5 className="card-title">Full Name:{employee.fullName}</h5>

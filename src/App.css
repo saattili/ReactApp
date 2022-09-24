@@ -6,3 +6,8 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 
 }
+
+.standout{
+  box-shadow: 0px 5px 5px 10px rgb(237, 51, 59);
+  
+}
